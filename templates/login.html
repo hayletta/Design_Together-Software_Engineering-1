@@ -1,0 +1,43 @@
+<html>
+<head>
+    <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <h1><div class="box2">
+    <img src="{{ url_for('static', filename='house.png') }}" >
+    Design Together</div></h1>
+    <form class="search-form">
+        Search for accounts or projects!<p></p>
+        <input type=""search placeholder="Search" />
+        <button type="submit">Search</button>
+    </form>
+    <div class="box box1">
+    <img src="{{ url_for('static', filename='login.png') }}" >
+    </div>
+    <h4>Welcome Back! <p></p></h4>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-message">
+                <ul>
+                    {% for category, message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <p> {{ form.username.label }} {{ form.username() }} </p>
+        <p> {{ form.password.label }} {{ form.password() }} </p>
+        <p>{{ form.submit() }}</p>
+        <p>{{ form.help() }}</p>
+        <p><a href="{{ url_for('create_account') }}">Create an Account. It's free!</a></p>
+    </form>
+
+
+</body>
+</html>
